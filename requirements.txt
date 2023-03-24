@@ -1,1 +1,2 @@
 Flask>=2.0.2
+MyApplication~=0.1.0
