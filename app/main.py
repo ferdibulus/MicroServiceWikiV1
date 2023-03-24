@@ -1,7 +1,7 @@
 from flask import Flask
 import json
-#import event
 from flask_cors import CORS
+from app.event import event
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
@@ -9,8 +9,7 @@ cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 # Start taking data from api in compile time
 print("Initial Data process has been started. It'll take approximately 15 minutes")
 
-
-# event.getDataFromApi()
+event.getDataFromApi()
 
 
 @app.route("/api/getAllEvents")
@@ -31,4 +30,4 @@ def hello():
 
 if __name__ == "__main__":
     # Only for debugging while developing
-    app.run(host="0.0.0.0", debug=True, port=80)
+    app.run(host="0.0.0.0", debug=True, port=81)
