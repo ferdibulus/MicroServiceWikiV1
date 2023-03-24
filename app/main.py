@@ -113,6 +113,10 @@ def getDataFromApi():
         print("returnData has been filled.")
 
 
+# Start taking data from api in compile time
+print("Initial Data process has been started. It'll take approximately 15 minutes")
+getDataFromApi()
+
 # The scheduled method works once a day at 23:59
 scheduler = BackgroundScheduler()
 scheduler.add_job(func=getDataFromApi, trigger='cron', hour='23', minute='59')
@@ -124,20 +128,11 @@ def get():
     return json.dumps([obj.__dict__ for obj in returnData])
 
 
-@app.route("/api/initialDataStart")
-def getaa():
-    # Start taking data from api in compile time
-    print("Initial Data process has been started. It'll take approximately 15 minutes")
-    getDataFromApi()
-    return "Api is Ready!"
-
-
-@app.route("/")
+@app.route("/api")
 def hello():
-    return "Hello1 World from Flask in a uWSGI Nginx Docker container with \
-     Python 3.8 (from the example template)"
+    return "Hello World from Flask in a uWSGI Nginx Docker container with"
 
 
 if __name__ == "__main__":
     # Only for debugging while developing
-    app.run(host="0.0.0.0", debug=True, port=81)
+    app.run(host="0.0.0.0", debug=True, port=5000)
