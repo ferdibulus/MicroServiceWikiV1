@@ -1,9 +1,4 @@
-import wikipedia
-import requests
-import json
-import datetime
 
-from apscheduler.schedulers.background import BackgroundScheduler
 
 returnData = []
 
